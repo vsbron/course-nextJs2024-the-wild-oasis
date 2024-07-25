@@ -4,7 +4,9 @@ async function Page() {
   // Fetching data straight from the server component
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await res.json();
-  console.log(data); // Logging on server
+
+  // Logging on server
+  console.log(data);
 
   return (
     <>

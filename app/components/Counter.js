@@ -8,7 +8,7 @@ function Counter({ users }) {
   // Creating state variable
   const [count, setCount] = useState(0);
 
-  // Logging it on client
+  // Logging on client
   console.log(users);
 
   // Returned JSX
