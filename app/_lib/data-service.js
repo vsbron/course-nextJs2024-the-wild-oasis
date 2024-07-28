@@ -25,8 +25,7 @@ export async function getCabinPrice(id) {
   const { data, error } = await supabase
     .from("cabins")
     .select("regularPrice, discount")
-    .eq("id", id)
-    .single();
+    .eq("id", id)``.single();
 
   if (error) {
     console.error(error);

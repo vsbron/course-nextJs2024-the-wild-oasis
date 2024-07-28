@@ -1,13 +1,15 @@
 import CabinCard from "@/app/_components/CabinCard";
+import { getCabins } from "../_lib/data-service";
 
 export const metadata = {
   title: "Cabins",
 };
 
-function Page() {
-  // CHANGE
-  const cabins = [];
+async function Page() {
+  // Getting the cabins data from supabase
+  const cabins = await getCabins();
 
+  // Returned JSX
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
