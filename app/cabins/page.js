@@ -1,7 +1,12 @@
 import { Suspense } from "react";
+
 import CabinList from "../_components/CabinList";
 import Spinner from "../_components/Spinner";
 
+// Opting out of caching (making the page dynamically)
+export const revalidate = 3600;
+
+// Setting the meta title
 export const metadata = {
   title: "Cabins",
 };

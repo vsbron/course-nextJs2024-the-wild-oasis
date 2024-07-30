@@ -10,6 +10,7 @@ const nextConfig = {
       },
     ],
   },
+  // output: "export" // For SSG
 };
 
 export default nextConfig;
