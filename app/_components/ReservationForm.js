@@ -1,6 +1,13 @@
+"use client";
+
+import { useReservation } from "./ReservationContext";
+
 function ReservationForm({ cabin }) {
   // Getting the max capacity from the cabin
   const { maxCapacity } = cabin;
+
+  // Getting the state and the setter from the custom hook
+  const { range } = useReservation();
 
   // Returned JSX
   return (
