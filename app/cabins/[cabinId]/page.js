@@ -1,8 +1,11 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 
 import TextExpander from "@/app/_components/TextExpander";
+import Reservation from "@/app/_components/Reservation";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
+import Loading from "@/app/loading";
 
 // Generating the metadata using the fetched data
 export async function generateMetadata({ params }) {
@@ -20,9 +23,10 @@ export async function generateStaticParams() {
 }
 
 async function Page({ params }) {
-  // Fetching the cabin data
+  // Getting the cabin data and destructuring it
+  const cabin = await getCabin(params.cabinId);
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
-    await getCabin(params.cabinId);
+    cabin;
 
   // Returned JSX
   return (
@@ -72,9 +76,12 @@ async function Page({ params }) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+        <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">
+          Reserve {name} today. Pay on arrival.
         </h2>
+        <Suspense fallback={<Loading />}>
+          <Reservation cabin={cabin} />
+        </Suspense>
       </div>
     </div>
   );

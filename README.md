@@ -15,7 +15,7 @@ Client-side web app for The Wild Oasis project which allows to choose a cabin an
 - Built using React and NEXT.js;
 - Cabins page includes a filter that works by passing the state from Client to Server component using URL and Search params;
 - Dynamic Routes (with generated static params) are used for individual cabin pages;
-- Uses <Image /> component for images optmizations;
+- Uses Image component for images optmizations;
 
 ## Live version
 
