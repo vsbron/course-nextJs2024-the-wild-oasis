@@ -2,16 +2,20 @@ import { Suspense } from "react";
 
 import CabinList from "../_components/CabinList";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/Filter";
 
-// Opting out of caching (making the page dynamically)
-export const revalidate = 3600;
+// Opting out of caching (making the page dynamically) (Not relevant anymore)
+// export const revalidate = 3600;
 
 // Setting the meta title
 export const metadata = {
   title: "Cabins",
 };
 
-async function Page() {
+async function Page({ searchParams }) {
+  // Creating filter const based on the URL search params
+  const filter = searchParams?.capacity ?? "all";
+
   // Returned JSX
   return (
     <div>
@@ -26,8 +30,12 @@ async function Page() {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+
       <Suspense fallback={<Spinner />}>
-        <CabinList />
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
