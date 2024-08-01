@@ -15,6 +15,9 @@ const authConfig = {
       return !!auth?.user;
     },
   },
+  pages: {
+    signIn: "/login",
+  },
 };
 
 // Exporting everything we get from calling NextAuth with the config file
@@ -23,4 +26,6 @@ const authConfig = {
 export const {
   auth,
   handlers: { GET, POST },
+  signIn,
+  signOut,
 } = NextAuth(authConfig);
