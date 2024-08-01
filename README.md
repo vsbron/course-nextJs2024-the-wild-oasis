@@ -5,7 +5,7 @@ Client-side web app for The Wild Oasis project which allows to choose a cabin an
 ## Features
 
 - Cabins page that lists all available cabins;
-- Individual Cabin page with more details;
+- Individual Cabin page with more details and option to reserve the cabin;
 - Guest area with its separate side navigation;
 - Guast area allows user to see his reservation and customize his profile;
 - About us page with the more info on the service and company;

@@ -10,7 +10,7 @@ const initialState = { from: undefined, to: undefined };
 // Setting the provider with children
 function ReservationProvider({ children }) {
   // Setting the state for the range
-  const { range, setRange } = useState(initialState);
+  const [range, setRange] = useState(initialState);
 
   // Helper function to reset the range
   const resetRange = () => setRange(initialState);

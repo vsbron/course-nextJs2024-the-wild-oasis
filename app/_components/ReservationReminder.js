@@ -9,7 +9,7 @@ function ReservationReminder() {
   const { range, resetRange } = useReservation();
 
   // Guard clause
-  if (!range?.from || !range?.to) return null;
+  if (!range.from || !range.to) return null;
 
   // Returned JSX
   return (
