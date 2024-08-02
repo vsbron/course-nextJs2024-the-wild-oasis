@@ -1,11 +1,11 @@
 "use client";
-
 import { useState } from "react";
 import { updateGuest } from "../_lib/actions";
+import Image from "next/image";
 
 function UpdateProfileForm({ guest, children }) {
   // Destructuring the guest parameter
-  const { fullName, email, nationality, nationalId, countryFlag } = guest;
+  const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
   // Setting the state for the count
   const [count, setCount] = useState(0);
@@ -39,10 +39,12 @@ function UpdateProfileForm({ guest, children }) {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
-          <img
+          <Image
             src={countryFlag}
-            alt="Country flag"
+            width={30}
+            height={20}
             className="h-5 rounded-sm"
+            alt="Country flag"
           />
         </div>
       </div>
@@ -54,7 +56,7 @@ function UpdateProfileForm({ guest, children }) {
         <input
           name="nationalID"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-          defaultValue={nationalId}
+          defaultValue={nationalID}
         />
       </div>
 

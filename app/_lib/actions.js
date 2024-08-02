@@ -1,4 +1,5 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 
@@ -25,7 +26,7 @@ export async function updateGuest(formData) {
   const nationalID = formData.get("nationalID");
   const [nationality, countryFlag] = formData.get("nationality").split("%");
 
-  // Validating the nationalId number
+  // Validating the nationalID number
   if (!/^[a-zA-Z0-9]{6,12}$/.test(nationalID))
     throw new Error("Please provide a valid National ID");
 
@@ -42,4 +43,7 @@ export async function updateGuest(formData) {
 
   // Error handler if query wasn't successfull
   if (error) throw new Error("Guest could not be updated");
+
+  // Revalidating path to get rid of caching
+  revalidatePath("/account/profile");
 }
