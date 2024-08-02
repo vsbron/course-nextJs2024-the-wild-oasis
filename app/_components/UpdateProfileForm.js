@@ -1,22 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { updateGuest } from "../_lib/actions";
 
-function UpdateProfileForm({ children }) {
+function UpdateProfileForm({ guest, children }) {
+  // Destructuring the guest parameter
+  const { fullName, email, nationality, nationalId, countryFlag } = guest;
+
   // Setting the state for the count
   const [count, setCount] = useState(0);
 
-  // CHANGE
-  const countryFlag = "pt.jpg";
-
   // Returned JSX
   return (
-    <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
+    <form
+      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+      action={updateGuest}
+    >
       <div className="space-y-2">
         <label>Full name</label>
         <input
           disabled
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+          name="fullName"
+          defaultValue={fullName}
         />
       </div>
 
@@ -25,6 +31,8 @@ function UpdateProfileForm({ children }) {
         <input
           disabled
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+          name="email"
+          defaultValue={email}
         />
       </div>
 
@@ -46,6 +54,7 @@ function UpdateProfileForm({ children }) {
         <input
           name="nationalID"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          defaultValue={nationalId}
         />
       </div>
 

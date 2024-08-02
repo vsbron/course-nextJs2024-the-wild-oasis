@@ -1,11 +1,45 @@
 "use server";
+import { auth, signIn, signOut } from "./auth";
+import { supabase } from "./supabase";
 
-import { signIn, signOut } from "./auth";
-
+// Server action for logging in
 export async function signInAction() {
   await signIn("google", { redirectTo: "/account" });
 }
 
+// Server action for logging out
 export async function signOutAction() {
   await signOut({ redirectTo: "/", redirect: true });
+}
+
+// Server action for updating the user details
+export async function updateGuest(formData) {
+  // Getting the session and the guest ID
+  const session = await auth();
+  const { guestId } = session.user;
+
+  // Guard clause for not logged in users
+  if (!session) throw new Error("You must be logged in");
+
+  // Getting the values from formData
+  const nationalID = formData.get("nationalID");
+  const [nationality, countryFlag] = formData.get("nationality").split("%");
+
+  // Validating the nationalId number
+  if (!/^[a-zA-Z0-9]{6,12}$/.test(nationalID))
+    throw new Error("Please provide a valid National ID");
+
+  // Preparing the updated guest data
+  const updateData = { nationality, countryFlag, nationalID };
+
+  // Updating the guest data in the Database by running a query
+  const { data, error } = await supabase
+    .from("guests")
+    .update(updateData)
+    .eq("id", guestId)
+    .select()
+    .single();
+
+  // Error handler if query wasn't successfull
+  if (error) throw new Error("Guest could not be updated");
 }
