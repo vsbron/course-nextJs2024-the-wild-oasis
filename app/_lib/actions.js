@@ -1,9 +1,10 @@
 "use server";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 import { auth, signIn, signOut } from "./auth";
-import { supabase } from "./supabase";
 import { getBookings } from "./data-service";
+import { supabase } from "./supabase";
 
 // Server action for logging in
 export async function signInAction() {
@@ -36,7 +37,7 @@ export async function updateGuest(formData) {
   const updateData = { nationality, countryFlag, nationalID };
 
   // Updating the guest data in the Database by running a query
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("guests")
     .update(updateData)
     .eq("id", guestId)
@@ -76,4 +77,51 @@ export async function deleteReservation(bookingId) {
 
   // Revalidating path to get rid of caching
   revalidatePath("/account/reservations");
+}
+
+// Server action for updating the reservation
+export async function updateReservation(formData) {
+  // Getting the values from formData
+  const bookingId = Number(formData.get("bookingId"));
+
+  // Getting the session object
+  const session = await auth();
+
+  // Guard clause
+  if (!session) throw new Error("You must be logged in");
+
+  // Another guard clause to check whether an individual tries to edit someone's booking
+  const guestBookings = await getBookings(session.user.guestId); // Get all the bookings from current user
+  const guestBookingsIds = guestBookings.map((booking) => booking.id); // Map over them and get the IDs
+
+  // If the IDs do not have the ID we try to edit - throw error
+  if (!guestBookingsIds.includes(bookingId))
+    throw new Error("You are not allowed to edit this booking");
+
+  // Preparing the updated guest data
+  const updateData = {
+    numGuests: Number(formData.get("numGuests")),
+    observations: formData.get("observations").slice(0, 1000),
+  };
+
+  // Running the query
+  const { error } = await supabase
+    .from("bookings")
+    .update(updateData)
+    .eq("id", bookingId)
+    .select()
+    .single();
+
+  // Error handling
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be updated");
+  }
+
+  // Revalidating path to get rid of caching
+  revalidatePath(`/account/reservations/${bookingId}`);
+  revalidatePath("/account/reservations");
+
+  // Redirect to the main reservations page
+  redirect("/account/reservations");
 }
