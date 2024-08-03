@@ -1,7 +1,9 @@
 "use server";
 import { revalidatePath } from "next/cache";
+
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
+import { getBookings } from "./data-service";
 
 // Server action for logging in
 export async function signInAction() {
@@ -55,6 +57,13 @@ export async function deleteReservation(bookingId) {
 
   // Guard clause
   if (!session) throw new Error("You must be logged in");
+
+  // Another guard clause to check whether an individual tries to delete someone's booking
+  const guestBookings = await getBookings(session.user.guestId); // Get all the bookings from current user
+  const guestBookingsIds = guestBookings.map((booking) => booking.id); // Map over them and get the IDs
+  // If the IDs do not have the ID we try to delete - throw error
+  if (guestBookingsIds.includes(bookingId))
+    throw new Error("You are not allowed to delete this booking");
 
   // Running a query
   const { data, error } = await supabase
