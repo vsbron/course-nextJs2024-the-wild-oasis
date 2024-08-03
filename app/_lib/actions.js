@@ -47,3 +47,24 @@ export async function updateGuest(formData) {
   // Revalidating path to get rid of caching
   revalidatePath("/account/profile");
 }
+
+// Server action for deleting the booking
+export async function deleteReservation(bookingId) {
+  // Getting the session object
+  const session = await auth();
+
+  // Guard clause
+  if (!session) throw new Error("You must be logged in");
+
+  // Running a query
+  const { data, error } = await supabase
+    .from("bookings")
+    .delete()
+    .eq("id", bookingId);
+
+  // Error handling
+  if (error) throw new Error("Booking could not be deleted");
+
+  // Revalidating path to get rid of caching
+  revalidatePath("/account/reservations");
+}

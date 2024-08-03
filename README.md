@@ -10,6 +10,7 @@ Client-side web app for The Wild Oasis project which allows to choose a cabin an
 - Guest area page is only accessible by authorized users;
 - Authorization can be done only with Google Account;
 - Guast area allows user to see his reservation and customize his profile;
+- Reservation page lists active reservations with the option to delete the upcoming ones;
 - About us page with the more info on the service and company;
 
 ## Details
