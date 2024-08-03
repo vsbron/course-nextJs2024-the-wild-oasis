@@ -62,7 +62,7 @@ export async function deleteReservation(bookingId) {
   const guestBookings = await getBookings(session.user.guestId); // Get all the bookings from current user
   const guestBookingsIds = guestBookings.map((booking) => booking.id); // Map over them and get the IDs
   // If the IDs do not have the ID we try to delete - throw error
-  if (guestBookingsIds.includes(bookingId))
+  if (!guestBookingsIds.includes(bookingId))
     throw new Error("You are not allowed to delete this booking");
 
   // Running a query
