@@ -7,8 +7,7 @@ async function Page({ params }) {
   const { bookingId } = params;
 
   // Getting and destructuring the booking and cabin data from database
-  const booking = await getBooking(bookingId);
-  const { cabinId, numGuests, observations } = booking;
+  const { cabinId, numGuests, observations } = await getBooking(bookingId);
   const { maxCapacity } = await getCabin(cabinId);
 
   // Returned JSX

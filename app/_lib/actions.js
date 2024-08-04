@@ -119,8 +119,8 @@ export async function updateReservation(formData) {
   }
 
   // Revalidating path to get rid of caching
-  revalidatePath(`/account/reservations/${bookingId}`);
   revalidatePath("/account/reservations");
+  revalidatePath(`/account/reservations/edit/${bookingId}`);
 
   // Redirect to the main reservations page
   redirect("/account/reservations");
