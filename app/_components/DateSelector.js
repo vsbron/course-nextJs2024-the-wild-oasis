@@ -12,6 +12,10 @@ import "react-day-picker/dist/style.css";
 import { useReservation } from "./ReservationContext";
 
 function isAlreadyBooked(range, datesArr) {
+  // Guard clause
+  if (range?.from === range?.to) return true;
+
+  // Returned JSX
   return (
     range.from &&
     range.to &&
@@ -25,6 +29,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
   // Getting the state and the setter from the custom hook
   const { range, setRange, resetRange } = useReservation();
 
+  // Setting the displayed range (in order to avoif overlapped bookings)
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
   // Getting some const variables from cabin and Context API
@@ -84,7 +89,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
           ) : null}
         </div>
 
-        {range.from || range.to ? (
+        {range?.from || range?.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
             onClick={resetRange}
