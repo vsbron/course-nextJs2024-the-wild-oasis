@@ -51,6 +51,48 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
+// Server action for adding a new reservation
+// Receives two arguments because we binded the server action with additional data
+export async function createReservation(bookingData, formData) {
+  // Getting the session object
+  const session = await auth();
+
+  // Guard clause
+  if (!session) throw new Error("You must be logged in");
+
+  // Setting the new data object
+  const newBooking = {
+    ...bookingData,
+    guestId: session.user.guestId,
+    numGuests: Number(formData.get("numGuests")),
+    observations: formData.get("observations").slice(0, 1000),
+    extrasPrice: 0,
+    totalPrice: bookingData.cabinPrice,
+    isPaid: false,
+    hasBreakfast: false,
+    status: "unconfirmed",
+  };
+
+  const { error } = await supabase
+    .from("bookings")
+    .insert([newBooking])
+    // So that the newly created object gets returned!
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be created");
+  }
+
+  // Revalidating path to get rid of caching
+  revalidatePath(`/account/cabins/${bookingData.cabinId}`);
+  revalidatePath("/account/reservations");
+
+  // Redirect to the main reservations page
+  redirect("/account/reservations");
+}
+
 // Server action for deleting the booking
 export async function deleteReservation(bookingId) {
   // Getting the session object
