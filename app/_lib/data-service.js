@@ -2,19 +2,16 @@ import { eachDayOfInterval } from "date-fns";
 import { supabase } from "./supabase";
 import { notFound } from "next/navigation";
 
-/////////////
-// GET
-
+// Query function for getting the cabin via ID
 export async function getCabin(id) {
+  // Running the query
   const { data, error } = await supabase
     .from("cabins")
     .select("*")
     .eq("id", id)
     .single();
 
-  // For testing
-  // await new Promise((res) => setTimeout(res, 1000));
-
+  // Error handlng
   if (error) {
     console.error(error);
     notFound();
@@ -23,12 +20,15 @@ export async function getCabin(id) {
   return data;
 }
 
+// Query function for getting the cabin price via ID
 export async function getCabinPrice(id) {
+  // Running the query
   const { data, error } = await supabase
     .from("cabins")
     .select("regularPrice, discount")
     .eq("id", id)``.single();
 
+  // Error handlng
   if (error) {
     console.error(error);
   }
@@ -36,12 +36,15 @@ export async function getCabinPrice(id) {
   return data;
 }
 
+// Query function for getting all the cabins
 export const getCabins = async function () {
+  // Running the query
   const { data, error } = await supabase
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
 
+  // Error handlng
   if (error) {
     console.error(error);
     throw new Error("Cabins could not be loaded");
@@ -50,8 +53,9 @@ export const getCabins = async function () {
   return data;
 };
 
-// Guests are uniquely identified by their email address
+// Query function for getting the guest via email
 export async function getGuest(email) {
+  // Running the query
   const { data, error } = await supabase
     .from("guests")
     .select("*")
@@ -62,13 +66,16 @@ export async function getGuest(email) {
   return data;
 }
 
+// Query function for getting the booking via ID
 export async function getBooking(id) {
+  // Running the query
   const { data, error, count } = await supabase
     .from("bookings")
     .select("*")
     .eq("id", id)
     .single();
 
+  // Error handlng
   if (error) {
     console.error(error);
     throw new Error("Booking could not get loaded");
@@ -77,8 +84,10 @@ export async function getBooking(id) {
   return data;
 }
 
+// Query function for getting all of the guest's booking via guest ID
 export async function getBookings(guestId) {
-  const { data, error, count } = await supabase
+  // Running the query
+  const { data, error } = await supabase
     .from("bookings")
     // We actually also need data on the cabins as well. But let's ONLY take the data that we actually need, in order to reduce downloaded data.
     .select(
@@ -87,6 +96,7 @@ export async function getBookings(guestId) {
     .eq("guestId", guestId)
     .order("startDate");
 
+  // Error handlng
   if (error) {
     console.error(error);
     throw new Error("Bookings could not get loaded");
@@ -95,18 +105,20 @@ export async function getBookings(guestId) {
   return data;
 }
 
+// Query function for getting all the booked dates of the cabin via ID
 export async function getBookedDatesByCabinId(cabinId) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
 
-  // Getting all bookings
+  // Running the query (getting all the bookings)
   const { data, error } = await supabase
     .from("bookings")
     .select("*")
     .eq("cabinId", cabinId)
     .or(`startDate.gte.${today},status.eq.checked-in`);
 
+  // Error handlng
   if (error) {
     console.error(error);
     throw new Error("Bookings could not get loaded");
@@ -125,9 +137,12 @@ export async function getBookedDatesByCabinId(cabinId) {
   return bookedDates;
 }
 
+// Query function for getting the settings
 export async function getSettings() {
+  // Running the query
   const { data, error } = await supabase.from("settings").select("*").single();
 
+  // Error handlng
   if (error) {
     console.error(error);
     throw new Error("Settings could not be loaded");
@@ -136,6 +151,7 @@ export async function getSettings() {
   return data;
 }
 
+// Function for getting all the countries
 export async function getCountries() {
   try {
     const res = await fetch(
@@ -146,4 +162,18 @@ export async function getCountries() {
   } catch {
     throw new Error("Could not fetch countries");
   }
+}
+
+// Query function for creating the new guest if logged for the first time
+export async function createGuest(newGuest) {
+  // Running the query
+  const { data, error } = await supabase.from("guests").insert([newGuest]);
+
+  // Error handlng
+  if (error) {
+    console.error(error);
+    throw new Error("Guest could not be created");
+  }
+
+  return data;
 }

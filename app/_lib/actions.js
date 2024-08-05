@@ -90,7 +90,7 @@ export async function createReservation(bookingData, formData) {
   revalidatePath("/account/reservations");
 
   // Redirect to the main reservations page
-  redirect("/account/reservations");
+  redirect("/cabins/thankyou");
 }
 
 // Server action for deleting the booking
