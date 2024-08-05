@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function Page() {
+  // Returned JSX
   return (
     <div className="text-center space-y-6 mt-4">
       <h1 className="text-3xl font-semibold">
