@@ -12,13 +12,13 @@ export async function generateMetadata({ params }) {
 }
 
 // Telling Next.js ahead of time which params exists (to avoid dynamic rendering)
-export async function generateStaticParams() {
-  const cabins = await getCabins();
-  const ids = cabins.map((cabin) => {
-    cabinId: String(cabin.id);
-  });
-  return ids;
-}
+// export async function generateStaticParams() {
+//   const cabins = await getCabins();
+//   const ids = cabins.map((cabin) => {
+//     cabinId: String(cabin.id);
+//   });
+//   return ids;
+// }
 
 async function Page({ params }) {
   // Getting the cabin data from database
