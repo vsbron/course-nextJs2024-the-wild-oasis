@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 
-import CabinList from "../_components/CabinList";
-import Spinner from "../_components/Spinner";
-import Filter from "../_components/Filter";
-import ReservationReminder from "../_components/ReservationReminder";
+import CabinList from "@/app/_components/CabinList";
+import Spinner from "@/app/_components/Spinner";
+import Filter from "@/app/_components/Filter";
+import ReservationReminder from "@/app/_components/ReservationReminder";
 
 // Opting out of caching (making the page dynamically) (Not relevant anymore)
 // export const revalidate = 3600;
@@ -20,7 +20,7 @@ async function Page({ searchParams }) {
   // Returned JSX
   return (
     <div>
-      <h1 className="text-4xl mb-5 text-accent-400 font-medium">
+      <h1 className="text-4xl mb-5 text-accent-400 font-medium sm:text-3xl">
         Our Luxury Cabins
       </h1>
       <p className="text-primary-200 text-lg mb-10">
