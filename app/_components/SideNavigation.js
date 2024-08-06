@@ -14,17 +14,17 @@ const navLinks = [
   {
     name: "Home",
     href: "/account",
-    icon: <HomeIcon className="h-5 w-5 text-primary-600" />,
+    icon: <HomeIcon className="h-5 w-5 text-primary-600 sm:text-primary-400" />,
   },
   {
     name: "Reservations",
     href: "/account/reservations",
-    icon: <CalendarDaysIcon className="h-5 w-5 text-primary-600" />,
+    icon: <CalendarDaysIcon className="h-5 w-5 text-primary-600 sm:text-primary-400" />,
   },
   {
     name: "Guest profile",
     href: "/account/profile",
-    icon: <UserIcon className="h-5 w-5 text-primary-600" />,
+    icon: <UserIcon className="h-5 w-5 text-primary-600 sm:text-primary-400" />,
   },
 ];
 

@@ -10,7 +10,7 @@ function UpdateProfileForm({ guest, children }) {
   // Returned JSX
   return (
     <form
-      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col sm:px-6"
+      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col lg:px-6"
       action={updateGuest}
     >
       <div className="space-y-2">
