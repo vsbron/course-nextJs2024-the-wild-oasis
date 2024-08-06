@@ -80,6 +80,7 @@ function Navigation({ session }) {
               <Link
                 href="/account"
                 className="hover:text-accent-400 transition-colors"
+                onClick={closeMenu}
               >
                 Guest area
               </Link>
