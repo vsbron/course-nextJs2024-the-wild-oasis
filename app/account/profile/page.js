@@ -15,11 +15,11 @@ export default async function Page() {
   // Returned JSX
   return (
     <div>
-      <h2 className="font-semibold text-2xl text-accent-400 mb-4">
+      <h2 className="font-semibold text-2xl text-accent-400 mb-4 sm:text-xl">
         Update your guest profile
       </h2>
 
-      <p className="text-lg mb-8 text-primary-200">
+      <p className="text-lg mb-8 text-primary-200 sm:text-base">
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
@@ -28,7 +28,7 @@ export default async function Page() {
         <SelectCountry
           name="nationality"
           id="nationality"
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          className="px-5 py-3 bg-primary-200 -mt-4 text-primary-800 w-full shadow-sm rounded-sm sm:px-3 sm:pt-2.5 sm:pb-2 sm:text-[1rem]"
           defaultCountry={guest.nationality}
         />
       </UpdateProfileForm>

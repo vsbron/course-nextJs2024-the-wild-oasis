@@ -12,7 +12,7 @@ async function Page() {
 
   // Returned JSX
   return (
-    <h2 className="font-semibold text-2xl text-accent-400 mb-7">
+    <h2 className="font-semibold text-2xl text-accent-400 mb-7 sm:text-xl">
       Welcome, {firstName}
     </h2>
   );
