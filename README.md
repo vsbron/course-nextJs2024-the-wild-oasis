@@ -25,6 +25,7 @@ The app data is syncronized with The Wild Oasis interal SPA for managing guests,
 ## Details
 
 - Built using React and NEXT.js;
+- Styles are handled with Tailwind CSS;
 - Cabins page includes a filter that works by passing the state from Client to Server component using URL and Search params;
 - Dynamic Routes (with generated static params) are used for individual cabin pages;
 - Account route is protected by Auth.js library, it can be accessed only after logging in with Google Account;
@@ -33,6 +34,7 @@ The app data is syncronized with The Wild Oasis interal SPA for managing guests,
 - When making/updating a reservation or user details, forms send the data to the database using Server Actions;
 - Forms status are displayed using useFormStatus and useTransition hooks;
 - Uses Image component for images optmizations;
+- Responsive design supporting mobile devices with a width of at least 360px;
 
 ## Live version
 
