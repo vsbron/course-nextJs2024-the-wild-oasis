@@ -38,3 +38,16 @@
   --rdp-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
 }
+
+.rdp-dropdown{
+  color: theme("colors.primary.900");
+}
+
+@media screen and (max-width:40em) {
+  .rdp-months{
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .rdp-month{margin: 0!important}
+}

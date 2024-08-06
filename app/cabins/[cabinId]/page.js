@@ -26,11 +26,11 @@ async function Page({ params }) {
 
   // Returned JSX
   return (
-    <div className="max-w-6xl mx-auto mt-8">
+    <div className="max-w-6xl mx-auto mt-8 sm:mt-0">
       <Cabin cabin={cabin} />
       <div>
-        <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">
-          Reserve {cabin.name} today. Pay on arrival.
+        <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400 lg:text-4xl xs:text-3xl">
+          Reserve {cabin.name} today. <br className="hidden md:inline-block" />Pay on arrival.
         </h2>
         <Suspense fallback={<Loading />}>
           <Reservation cabin={cabin} />

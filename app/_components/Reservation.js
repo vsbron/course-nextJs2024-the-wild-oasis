@@ -17,7 +17,7 @@ async function Reservation({ cabin }) {
 
   // Returned JSX
   return (
-    <div className="grid grid-cols-2 border-primary-800 min-h-[400px]">
+    <div className="grid grid-cols-2 border-primary-800 min-h-[400px] xl:grid-cols-[1fr_.8fr] lg:flex lg:flex-col lg:max-w-[540px] lg:items-center lg:m-auto lg:gap-12">
       <DateSelector
         settings={settings}
         bookedDates={bookedDates}

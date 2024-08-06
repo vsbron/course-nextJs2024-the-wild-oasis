@@ -44,7 +44,7 @@ async function Page() {
         </div>
       </div>
 
-      <div className="col-span-2 lg:col-span-1 lg:mb-24 max-w-[600px]">
+      <div className="col-span-2 lg:col-span-1 lg:mb-12 max-w-[600px]">
         <Image
           src={image1}
           placeholder="blur"

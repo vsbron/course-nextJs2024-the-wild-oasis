@@ -8,7 +8,7 @@ async function Header() {
 
   // Returned JSX
   return (
-    <header className="border-b border-primary-900 px-8 py-5">
+    <header className="border-b border-primary-900 px-8 py-5 sm:px-5 sm:py-3">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <Logo />
         <Navigation session={session} />
