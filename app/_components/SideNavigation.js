@@ -34,7 +34,7 @@ function SideNavigation() {
 
   // Returned JSX
   return (
-    <nav className="border-r border-primary-900">
+    <nav className="border-r border-primary-900 sm:-ml-1">
       <ul className="flex flex-col gap-2 text-lg sm:gap-0">
         {navLinks.map((link) => (
           <li key={link.name}>

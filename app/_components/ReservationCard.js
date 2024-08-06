@@ -26,7 +26,7 @@ function ReservationCard({ booking, onDelete }) {
 
   // Returned JSX
   return (
-    <div className="grid grid-cols-[8rem_1fr_100px] md:grid-cols-[8rem_1fr] sm:grid-cols-[73rem_1fr] xs:grid-cols-1 border border-primary-800">
+    <div className="grid grid-cols-[8rem_1fr_100px] md:grid-cols-[8rem_1fr] sm:grid-cols-[7rem_1fr] xs:grid-cols-1 border border-primary-800">
       <div className="relative w-auto xs:w-full xs:h-40">
         <Image
           src={image}

@@ -14,7 +14,7 @@ function UpdateProfileForm({ guest, children }) {
       action={updateGuest}
     >
       <div className="space-y-2">
-        <label className="sm:text-[1rem]">Full name</label>
+        <label className="sm:text-base">Full name</label>
         <input
           disabled
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400 sm:px-3 sm:pt-1.5 sm:pb-1 sm:text-[1rem]"
@@ -24,7 +24,7 @@ function UpdateProfileForm({ guest, children }) {
       </div>
 
       <div className="space-y-2">
-        <label className="sm:text-[1rem]">Email address</label>
+        <label className="sm:text-base">Email address</label>
         <input
           disabled
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400 sm:px-3 sm:pt-1.5 sm:pb-1 sm:text-[1rem]"

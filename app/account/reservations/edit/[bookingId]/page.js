@@ -19,17 +19,17 @@ async function Page({ params }) {
 
       <form
         action={updateReservation}
-        className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+        className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col lg:px-6"
       >
         {/* Hidden input for passing the ID with the formData to the server action */}
         <input type="hidden" name="bookingId" value={bookingId} />
 
         <div className="space-y-2">
-          <label htmlFor="numGuests">How many guests?</label>
+          <label className="sm:text-base" htmlFor="numGuests">How many guests?</label>
           <select
             name="numGuests"
             id="numGuests"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm sm:px-3 sm:pt-1.5 sm:pb-1 sm:text-[1rem]"
             defaultValue={numGuests}
             required
           >
@@ -45,13 +45,13 @@ async function Page({ params }) {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="observations">
+          <label className="sm:text-base" htmlFor="observations">
             Anything we should know about your stay?
           </label>
           <textarea
             name="observations"
             defaultValue={observations}
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-5 py-3 resize-none bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm sm:px-3 sm:pt-1.5 sm:pb-1 sm:text-[1rem] sm:h-24"
           />
         </div>
 
