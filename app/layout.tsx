@@ -1,6 +1,6 @@
-import Header from "./_components/Header";
-
+import { RootLayoutProp } from "./_lib/types";
 import { ReservationProvider } from "@/app/_components/ReservationContext";
+import Header from "@/app/_components/Header";
 
 // Setting the font
 import { Josefin_Sans } from "next/font/google";
@@ -13,10 +13,11 @@ export const metadata = {
     default: "Welcome to The Wild Oasis",
   },
   description:
-    "Luxurious cabin hotel, located in the heart of the Italian Dolomites, surrounded by beutiful mountains and dark forests.",
+    "Luxurious cabin hotel, located in the heart of the Italian Dolomites, surrounded by beautiful mountains and dark forests.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: RootLayoutProp) {
+  // Returned JSX
   return (
     <html lang="en">
       <body

@@ -4,6 +4,7 @@ import Link from "next/link";
 import bg from "@/public/bg.png";
 
 export default function Page() {
+  // Returned JSX
   return (
     <div className="h-full pb-16 flex justify-center items-center">
       <div>
