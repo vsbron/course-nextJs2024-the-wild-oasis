@@ -65,7 +65,7 @@ interface UserObject {
   name: string;
   email: string;
   image: string;
-  guestId: number;
+  guestId?: number;
 }
 
 // OTHER
