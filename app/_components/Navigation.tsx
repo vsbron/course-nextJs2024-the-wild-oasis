@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { HamburgerProps, SessionObject } from "../_lib/types";
 
-function Navigation({ session }: { session: SessionObject }) {
+function Navigation({ session }: { session: SessionObject | null }) {
   // State of the mobile menu
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
