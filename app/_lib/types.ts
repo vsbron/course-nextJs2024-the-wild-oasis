@@ -49,7 +49,7 @@ export interface CabinObject {
   description?: string;
 }
 export interface SessionObject {
-  user: {
+  user?: {
     name: string;
     email: string;
     image: string;
