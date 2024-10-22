@@ -58,6 +58,7 @@ function Filter() {
 
 // Separate Button component
 function Button({ filter, handleFilter, activeFilter, children }: ButtonProps) {
+  // Returned JSX
   return (
     <button
       className={`px-5 py-2 hover:bg-primary-700 ${

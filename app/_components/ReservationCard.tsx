@@ -5,16 +5,17 @@ import DeleteReservation from "@/app/_components/DeleteReservation";
 import Image from "next/image";
 import Link from "next/link";
 
-export const formatDistanceFromNow = (dateStr) =>
+import { ReservationCardProps } from "../_lib/types";
+
+export const formatDistanceFromNow = (dateStr: string) =>
   formatDistance(parseISO(dateStr), new Date(), {
     addSuffix: true,
   }).replace("about ", "");
 
-function ReservationCard({ booking, onDelete }) {
+function ReservationCard({ booking, onDelete }: ReservationCardProps) {
   // Destructuring the booking data
   const {
     id,
-    guestId,
     startDate,
     endDate,
     numNights,
@@ -39,7 +40,14 @@ function ReservationCard({ booking, onDelete }) {
       <div className="flex-grow px-5 py-3 flex flex-col sm:px-4">
         <div className="flex items-center justify-between">
           <h3 className="text-[1.2rem] font-semibold md:text-[1.1rem]">
-            {numNights} nights in Cabin {name} <span className="text-base lg:block lg:-mt-1">({isToday(new Date(startDate)) ? "Today" : formatDistanceFromNow(startDate)})</span>
+            {numNights} nights in Cabin {name}{" "}
+            <span className="text-base lg:block lg:-mt-1">
+              (
+              {isToday(new Date(startDate))
+                ? "Today"
+                : formatDistanceFromNow(startDate)}
+              )
+            </span>
           </h3>
           {isPast(new Date(startDate)) ? (
             <span className="bg-yellow-800 text-yellow-200 h-5 pt-1 px-3 xl:px-2 mb-1 uppercase text-xs font-bold flex items-center rounded-sm lg:hidden">
@@ -53,7 +61,14 @@ function ReservationCard({ booking, onDelete }) {
         </div>
 
         <p className="text-lg text-primary-300 lg:text-base">
-          <span className="hidden lg:inline">From: </span>{format(new Date(startDate), "EEE, MMM dd yyyy")}<span className="lg:hidden"> &mdash; </span><span className="hidden lg:inline"><br  />To: </span>{format(new Date(endDate), "EEE, MMM dd yyyy")}
+          <span className="hidden lg:inline">From: </span>
+          {format(new Date(startDate), "EEE, MMM dd yyyy")}
+          <span className="lg:hidden"> &mdash; </span>
+          <span className="hidden lg:inline">
+            <br />
+            To:{" "}
+          </span>
+          {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
 
         <div className="flex gap-4 mt-auto items-baseline lg:flex-wrap lg:gap-y-0 lg:mt-1">

@@ -1,11 +1,12 @@
 import { auth } from "@/app/_lib/auth";
 import { getBookedDatesByCabinId, getSettings } from "@/app/_lib/data-service";
+import { CabinObject } from "@/app/_lib/types";
 
 import DateSelector from "./DateSelector";
 import LoginMessage from "./LoginMessage";
 import ReservationForm from "./ReservationForm";
 
-async function Reservation({ cabin }) {
+async function Reservation({ cabin }: { cabin: CabinObject }) {
   // Getting the session from auth
   const session = await auth();
 

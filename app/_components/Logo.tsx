@@ -4,6 +4,7 @@ import Link from "next/link";
 import logo from "@/public/logo.png";
 
 function Logo() {
+  // Returned JSX
   return (
     <Link href="/" className="flex items-center gap-4 z-10">
       <div className="h-[60px] relative aspect-square sm:h-10">

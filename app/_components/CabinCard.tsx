@@ -5,8 +5,10 @@ import Link from "next/link";
 import { CabinObject } from "../_lib/types";
 
 function CabinCard({ cabin }: { cabin: CabinObject }) {
+  // Destructuring the cabin object
   const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
 
+  // Returned JSX
   return (
     <div className="flex border-primary-800 border">
       <div className="basis-40 flex-grow relative lg:flex-1 sm:basis-32 xs:basis-28">
