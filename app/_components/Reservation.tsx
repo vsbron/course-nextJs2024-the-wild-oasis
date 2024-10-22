@@ -25,7 +25,15 @@ async function Reservation({ cabin }: { cabin: CabinObject }) {
         cabin={cabin}
       />
       {session?.user ? (
-        <ReservationForm cabin={cabin} user={session.user} />
+        <ReservationForm
+          cabin={cabin}
+          user={{
+            ...session.user,
+            name: session.user.name!,
+            email: session.user.email!,
+            image: session.user.image!,
+          }}
+        />
       ) : (
         <LoginMessage />
       )}
