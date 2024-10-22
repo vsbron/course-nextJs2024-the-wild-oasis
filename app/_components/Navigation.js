@@ -3,11 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
-import { HamburgerProps, SessionObject } from "../_lib/types";
-
-function Navigation({ session }: { session: SessionObject | null }) {
+function Navigation({ session }) {
   // State of the mobile menu
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState < boolean > false;
 
   // Hamburger click handler
   const clickHandler = () => {
@@ -95,7 +93,7 @@ function Navigation({ session }: { session: SessionObject | null }) {
 }
 
 // Component for the hamburger
-function Hamburger({ onClick, menuOpen }: HamburgerProps) {
+function Hamburger({ onClick, menuOpen }) {
   // Returned JSX
   return (
     <div
