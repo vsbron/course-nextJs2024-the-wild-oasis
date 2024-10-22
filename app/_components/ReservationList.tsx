@@ -1,10 +1,12 @@
 "use client";
 import { useOptimistic } from "react";
-import ReservationCard from "./ReservationCard";
 
 import { deleteReservation } from "../_lib/actions";
+import { ReservationListProps } from "../_lib/types";
 
-function ReservationList({ bookings }) {
+import ReservationCard from "./ReservationCard";
+
+function ReservationList({ bookings }: ReservationListProps) {
   // Getting the optimistic state and setter function from useOptimistic hook
   // const [ optimisticState, setter function] = useOptimistic(currentState, update function (takes current state and the attribute we pass to setter function))
   const [optimisticBookings, optimisticDelete] = useOptimistic(
@@ -15,7 +17,7 @@ function ReservationList({ bookings }) {
   );
 
   // Delete handler function that we're going do prop drill
-  async function handleDelete(bookingId) {
+  async function handleDelete(bookingId: number) {
     optimisticDelete(bookingId); // optimistic delete
     await deleteReservation(bookingId); // server action delete
   }

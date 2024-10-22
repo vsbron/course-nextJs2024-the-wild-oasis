@@ -26,6 +26,14 @@ export type ReservationCardProps = {
   booking: BookingObject;
   onDelete: (bookingId: number) => Promise<void>;
 };
+export type ReservationFormProps = { cabin: CabinObject; user: UserObject };
+export type ReservationListProps = { bookings: BookingObject[] };
+export type SelectCountryProps = {
+  defaultCountry: string;
+  name: string;
+  id: string;
+  className: string;
+};
 
 // INTERFACES
 export interface BookingObject {
@@ -48,14 +56,16 @@ export interface CabinObject {
   image: string;
   description?: string;
 }
-export interface SessionObject {
-  user?: {
-    name: string;
-    email: string;
-    image: string;
-    guestId: number;
-  };
-  expires: string;
+export interface CountryObject {
+  name: string;
+  flag: string;
+  independent: boolean;
+}
+interface UserObject {
+  name: string;
+  email: string;
+  image: string;
+  guestId: number;
 }
 
 // OTHER

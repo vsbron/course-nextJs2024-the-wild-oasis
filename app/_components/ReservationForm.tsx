@@ -1,12 +1,13 @@
 "use client";
-import Image from "next/image";
 import { differenceInDays } from "date-fns";
 
 import { createReservation } from "@/app/_lib/actions";
+import { ReservationFormProps } from "@/app/_lib/types";
+
 import { useReservation } from "./ReservationContext";
 import SubmitButton from "./SubmitButton";
 
-function ReservationForm({ cabin, user }) {
+function ReservationForm({ cabin, user }: ReservationFormProps) {
   // Getting the range state and resetRange from the custom hook
   const { range, resetRange } = useReservation();
 
@@ -44,7 +45,9 @@ function ReservationForm({ cabin, user }) {
         }}
       >
         <div className="space-y-2">
-          <label className="sm:text-base" htmlFor="numGuests">How many guests?</label>
+          <label className="sm:text-base" htmlFor="numGuests">
+            How many guests?
+          </label>
           <select
             name="numGuests"
             id="numGuests"
