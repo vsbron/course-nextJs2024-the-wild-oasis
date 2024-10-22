@@ -1,7 +1,9 @@
 import { getCabins } from "../_lib/data-service";
+import { CabinFilter } from "../_lib/types";
+
 import CabinCard from "./CabinCard";
 
-async function CabinList({ filter }) {
+async function CabinList({ filter }: CabinFilter) {
   // Getting the cabins data from supabase
   const cabins = await getCabins();
 

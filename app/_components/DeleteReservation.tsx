@@ -2,9 +2,11 @@
 import { useTransition } from "react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
+import { DeleteReservationProps } from "../_lib/types";
+
 import SpinnerMini from "./SpinnerMini";
 
-function DeleteReservation({ bookingId, onDelete }) {
+function DeleteReservation({ bookingId, onDelete }: DeleteReservationProps) {
   // Getting the transition status and startTransition function from the hook
   const [isPending, startTransition] = useTransition();
 

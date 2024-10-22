@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ButtonProps } from "../_lib/types";
 
 function Filter() {
   // Getting the current search params, router object & current path using hooks
@@ -9,7 +10,7 @@ function Filter() {
   const pathname = usePathname();
 
   // Filter button handler function
-  function handleFilter(filter) {
+  function handleFilter(filter: string) {
     // Setting the new params
     const params = new URLSearchParams(searchParams);
     params.set("capacity", filter);
@@ -56,7 +57,7 @@ function Filter() {
 }
 
 // Separate Button component
-function Button({ filter, handleFilter, activeFilter, children }) {
+function Button({ filter, handleFilter, activeFilter, children }: ButtonProps) {
   return (
     <button
       className={`px-5 py-2 hover:bg-primary-700 ${

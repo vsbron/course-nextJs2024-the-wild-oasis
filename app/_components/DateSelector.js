@@ -29,7 +29,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
   // Getting the state and the setter from the custom hook
   const { range, setRange, resetRange } = useReservation();
 
-  // Setting the displayed range (in order to avoif overlapped bookings)
+  // Setting the displayed range (in order to avoid overlapped bookings)
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
   // Getting some const variables from cabin and Context API
@@ -66,7 +66,9 @@ function DateSelector({ settings, cabin, bookedDates }) {
           <p className="flex gap-2 items-baseline">
             {discount > 0 ? (
               <>
-                <span className="text-2xl sm:text-xl">${regularPrice - discount}</span>
+                <span className="text-2xl sm:text-xl">
+                  ${regularPrice - discount}
+                </span>
                 <span className="line-through font-semibold text-primary-700">
                   ${regularPrice}
                 </span>
@@ -79,11 +81,16 @@ function DateSelector({ settings, cabin, bookedDates }) {
           {numNights ? (
             <>
               <p className="bg-accent-600 px-3 py-2 text-2xl sm:text-xl sm:px-2">
-                <span>&times;</span><span>{numNights}</span>
+                <span>&times;</span>
+                <span>{numNights}</span>
               </p>
               <p className="xs:border-t xs:border-primary-900 xs:pt-2">
-                <span className="text-lg font-bold uppercase sm:text-base xs:text-lg">Total</span>{" "}
-                <span className="text-2xl font-semibold sm:text-xl xs:text-2xl">${cabinPrice}</span>
+                <span className="text-lg font-bold uppercase sm:text-base xs:text-lg">
+                  Total
+                </span>{" "}
+                <span className="text-2xl font-semibold sm:text-xl xs:text-2xl">
+                  ${cabinPrice}
+                </span>
               </p>
             </>
           ) : null}
