@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function Navigation({ session }) {
   // State of the mobile menu
-  const [menuOpen, setMenuOpen] = useState < boolean > false;
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Hamburger click handler
   const clickHandler = () => {
