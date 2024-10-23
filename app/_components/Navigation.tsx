@@ -2,8 +2,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { HamburgerProps, NavigationProps } from "../_lib/types";
 
-function Navigation({ session }) {
+function Navigation({ session }: NavigationProps) {
   // State of the mobile menu
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -71,7 +72,7 @@ function Navigation({ session }) {
                   width={32}
                   height={32}
                   className="rounded-full mb-1"
-                  alt={session.user.name}
+                  alt={session.user.name!}
                   referrerPolicy="no-referrer"
                 />
                 <span>Guest area</span>
@@ -93,7 +94,7 @@ function Navigation({ session }) {
 }
 
 // Component for the hamburger
-function Hamburger({ onClick, menuOpen }) {
+function Hamburger({ onClick, menuOpen }: HamburgerProps) {
   // Returned JSX
   return (
     <div

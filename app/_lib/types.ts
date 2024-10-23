@@ -24,6 +24,7 @@ export type HamburgerProps = {
   onClick: () => void;
   menuOpen: boolean;
 };
+export type NavigationProps = { session: Session | null };
 export type ReservationCardProps = {
   booking: BookingObject;
   onDelete: (bookingId: number) => Promise<void>;
@@ -78,6 +79,14 @@ interface GuestObject {
   nationality: string;
   nationalID: number;
   countryFlag: string;
+}
+interface Session {
+  user?: {
+    name?: string;
+    email?: string;
+    image?: string;
+  };
+  expires: string;
 }
 interface UserObject {
   name: string;
