@@ -10,9 +10,8 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
 import { useReservation } from "./ReservationContext";
-import { RangeType } from "../_lib/types";
 
-function isAlreadyBooked(range: RangeType, datesArr: Date[]) {
+function isAlreadyBooked(range, datesArr) {
   // Guard clause
   if (range?.from === range?.to) return true;
 
@@ -21,7 +20,7 @@ function isAlreadyBooked(range: RangeType, datesArr: Date[]) {
     range.from &&
     range.to &&
     datesArr.some((date) =>
-      isWithinInterval(date, { start: range.from!, end: range.to! })
+      isWithinInterval(date, { start: range.from, end: range.to })
     )
   );
 }
