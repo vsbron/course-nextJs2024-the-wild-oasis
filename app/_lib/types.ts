@@ -81,7 +81,7 @@ interface GuestObject {
   countryFlag: string;
 }
 interface Session {
-  user?: {
+  user: {
     name?: string;
     email?: string;
     image?: string;
