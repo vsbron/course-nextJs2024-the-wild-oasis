@@ -1,15 +1,18 @@
 "use client";
-
 import { useState } from "react";
+import { TextExpanderProps } from "../_lib/types";
 
-function TextExpander({ children }) {
+function TextExpander({ children }: TextExpanderProps) {
   // Setting the state for expanded text
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  // Typecasting of children
+  const text = children as string;
 
   // Modified text to be displayed fully or as a preview
   const displayText = isExpanded
-    ? children
-    : children.split(" ").slice(0, 40).join(" ") + "...";
+    ? text
+    : text.split(" ").slice(0, 40).join(" ") + "...";
 
   // Returned JSX
   return (

@@ -34,6 +34,7 @@ export type SelectCountryProps = {
   id: string;
   className: string;
 };
+export type TextExpanderProps = { children: React.ReactNode };
 
 // INTERFACES
 export interface BookingObject {
