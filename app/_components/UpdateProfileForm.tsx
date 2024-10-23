@@ -1,9 +1,11 @@
 import Image from "next/image";
 
 import { updateGuest } from "@/app/_lib/actions";
+import { UpdateProfileFormProps } from "@/app/_lib/types";
+
 import SubmitButton from "./SubmitButton";
 
-function UpdateProfileForm({ guest, children }) {
+function UpdateProfileForm({ guest, children }: UpdateProfileFormProps) {
   // Destructuring the guest parameter
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
@@ -35,7 +37,9 @@ function UpdateProfileForm({ guest, children }) {
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="sm:text-[1rem]" htmlFor="nationality">Where are you from?</label>
+          <label className="sm:text-[1rem]" htmlFor="nationality">
+            Where are you from?
+          </label>
           {countryFlag && (
             <Image
               src={countryFlag}
@@ -51,7 +55,9 @@ function UpdateProfileForm({ guest, children }) {
       {children}
 
       <div className="space-y-2">
-        <label className="sm:text-[1rem]" htmlFor="nationalID">National ID number</label>
+        <label className="sm:text-[1rem]" htmlFor="nationalID">
+          National ID number
+        </label>
         <input
           name="nationalID"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm sm:px-3 sm:pt-1.5 sm:pb-1 sm:text-[1rem]"

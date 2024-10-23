@@ -1,8 +1,9 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import { SubmitButtonProps } from "../_lib/types";
 
-function SubmitButton({ children, pendingLabel }) {
+function SubmitButton({ children, pendingLabel }: SubmitButtonProps) {
   // Getting the form status (pending) from the React DOM hook
   const { pending } = useFormStatus();
 

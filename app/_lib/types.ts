@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
 // GENERAL
 export type RootLayoutProp = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 export type ErrorProps = {
   error: Error;
@@ -34,10 +36,18 @@ export type SelectCountryProps = {
   id: string;
   className: string;
 };
-export type TextExpanderProps = { children: React.ReactNode };
+export type SubmitButtonProps = {
+  children: ReactNode;
+  pendingLabel: string;
+};
+export type TextExpanderProps = { children: ReactNode };
+export type UpdateProfileFormProps = {
+  guest: GuestObject;
+  children: ReactNode;
+};
 
 // INTERFACES
-export interface BookingObject {
+interface BookingObject {
   id: number;
   guestId: number;
   startDate: string;
@@ -62,6 +72,13 @@ export interface CountryObject {
   flag: string;
   independent: boolean;
 }
+interface GuestObject {
+  fullName: string;
+  email: string;
+  nationality: string;
+  nationalID: number;
+  countryFlag: string;
+}
 interface UserObject {
   name: string;
   email: string;
@@ -69,8 +86,20 @@ interface UserObject {
   guestId?: number;
 }
 
+// CONTEXT
+export type ReservationContextType = {
+  range: RangeType;
+  setRange: React.Dispatch<React.SetStateAction<RangeType>>;
+  resetRange: () => void;
+};
+export type ReservationProviderProp = { children: ReactNode };
+
 // OTHER
 export type CabinFilter = { filter: CabinSizes };
+export type RangeType = {
+  from: string | undefined;
+  to: string | undefined;
+};
 
 // UNIONS
 type CabinSizes = "small" | "medium" | "large";

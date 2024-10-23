@@ -1,16 +1,23 @@
 "use client";
 import { createContext, useContext, useState } from "react";
-
-// Creating the Context
-const ReservationContext = createContext();
+import {
+  RangeType,
+  ReservationContextType,
+  ReservationProviderProp,
+} from "../_lib/types";
 
 // Creating the initial state
-const initialState = { from: undefined, to: undefined };
+const initialState: RangeType = { from: undefined, to: undefined };
+
+// Creating the Context
+const ReservationContext = createContext<ReservationContextType | undefined>(
+  undefined
+);
 
 // Setting the provider with children
-function ReservationProvider({ children }) {
+function ReservationProvider({ children }: ReservationProviderProp) {
   // Setting the state for the range
-  const [range, setRange] = useState(initialState);
+  const [range, setRange] = useState<RangeType>(initialState);
 
   // Helper function to reset the range
   const resetRange = () => setRange(initialState);
