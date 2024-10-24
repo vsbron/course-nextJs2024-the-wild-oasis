@@ -1,8 +1,9 @@
 import SubmitButton from "@/app/_components/SubmitButton";
 import { updateReservation } from "@/app/_lib/actions";
 import { getBooking, getCabin } from "@/app/_lib/data-service";
+import { BookingIdPageParams } from "@/app/_lib/types";
 
-async function Page({ params }) {
+async function Page({ params }: BookingIdPageParams) {
   // Getting the booking ID from params
   const { bookingId } = params;
 
@@ -25,7 +26,9 @@ async function Page({ params }) {
         <input type="hidden" name="bookingId" value={bookingId} />
 
         <div className="space-y-2">
-          <label className="sm:text-base" htmlFor="numGuests">How many guests?</label>
+          <label className="sm:text-base" htmlFor="numGuests">
+            How many guests?
+          </label>
           <select
             name="numGuests"
             id="numGuests"

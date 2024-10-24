@@ -8,6 +8,9 @@ export type ErrorProps = {
   error: Error;
   reset: () => void;
 };
+export type MainLayoutProps = {
+  children: ReactNode;
+};
 
 // COMPONENT PROPS
 export type ButtonProps = {
@@ -85,6 +88,7 @@ interface Session {
     name?: string;
     email?: string;
     image?: string;
+    guestId?: string;
   };
   expires: string;
 }
@@ -102,6 +106,11 @@ export type ReservationContextType = {
   resetRange: () => void;
 };
 export type ReservationProviderProp = { children: ReactNode };
+
+// PAGES
+export type BookingIdPageParams = {
+  params: { bookingId: number };
+};
 
 // OTHER
 export type CabinFilter = { filter: CabinSizes };
