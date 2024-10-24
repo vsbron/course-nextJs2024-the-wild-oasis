@@ -4,6 +4,7 @@ import CabinList from "@/app/_components/CabinList";
 import Spinner from "@/app/_components/Spinner";
 import Filter from "@/app/_components/Filter";
 import ReservationReminder from "@/app/_components/ReservationReminder";
+import { CabinsPageParams } from "../_lib/types";
 
 // Opting out of caching (making the page dynamically) (Not relevant anymore)
 // export const revalidate = 3600;
@@ -13,7 +14,7 @@ export const metadata = {
   title: "Cabins",
 };
 
-async function Page({ searchParams }: {searchParams: any}) {
+async function Page({ searchParams }: CabinsPageParams) {
   // Creating filter const based on the URL search params
   const filter = searchParams?.capacity ?? "all";
 

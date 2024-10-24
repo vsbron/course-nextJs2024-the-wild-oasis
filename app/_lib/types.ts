@@ -109,7 +109,13 @@ export type ReservationProviderProp = { children: ReactNode };
 
 // PAGES
 export type BookingIdPageParams = {
-  params: { bookingId: number };
+  params: { bookingId: string };
+};
+export type CabinIdPageParams = {
+  params: { cabinId: string };
+};
+export type CabinsPageParams = {
+  searchParams: { capacity: CabinSizes };
 };
 
 // OTHER
