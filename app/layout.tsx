@@ -1,6 +1,6 @@
-import { RootLayoutProp } from "./_lib/types";
-import { ReservationProvider } from "@/app/_components/ReservationContext";
 import Header from "@/app/_components/Header";
+import { ReservationProvider } from "@/app/_components/ReservationContext";
+import { RootLayoutProp } from "@/app/_lib/types";
 
 // Setting the font
 import { Josefin_Sans } from "next/font/google";

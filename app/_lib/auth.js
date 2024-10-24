@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import { createGuest, getGuest } from "./data-service";
+
+import { createGuest, getGuest } from "@/app/_lib/data-service";
 
 // Setting up the config file with Google Auth Provider credentials
 const authConfig = {

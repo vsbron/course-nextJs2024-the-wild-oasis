@@ -1,9 +1,8 @@
 import Image from "next/image";
 
+import SubmitButton from "@/app/_components/SubmitButton";
 import { updateGuest } from "@/app/_lib/actions";
 import { UpdateProfileFormProps } from "@/app/_lib/types";
-
-import SubmitButton from "./SubmitButton";
 
 function UpdateProfileForm({ guest, children }: UpdateProfileFormProps) {
   // Destructuring the guest parameter

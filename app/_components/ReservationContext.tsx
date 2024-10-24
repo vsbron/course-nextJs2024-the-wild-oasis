@@ -1,10 +1,11 @@
 "use client";
 import { createContext, useContext, useState } from "react";
+
 import {
   RangeType,
   ReservationContextType,
   ReservationProviderProp,
-} from "../_lib/types";
+} from "@/app/_lib/types";
 
 // Creating the initial state
 const initialState: RangeType = { from: undefined, to: undefined };

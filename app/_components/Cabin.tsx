@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 
-import { CabinObject } from "../_lib/types";
-import TextExpander from "./TextExpander";
+import TextExpander from "@/app/_components/TextExpander";
+import { CabinProps } from "@/app/_lib/types";
 
-function Cabin({ cabin }: { cabin: CabinObject }) {
+function Cabin({ cabin }: CabinProps) {
   // Destructuring the Cabin props
   const { name, maxCapacity, image, description } = cabin;
 

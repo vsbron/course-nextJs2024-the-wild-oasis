@@ -19,6 +19,8 @@ export type ButtonProps = {
   activeFilter: string;
   children: string;
 };
+export type CabinProps = { cabin: CabinObject };
+export type CabinCardProps = { cabin: CabinObject };
 export type DeleteReservationProps = {
   bookingId: number;
   onDelete: (bookingId: number) => Promise<void>;
@@ -28,6 +30,7 @@ export type HamburgerProps = {
   menuOpen: boolean;
 };
 export type NavigationProps = { session: Session | null };
+export type ReservationProps = { cabin: CabinObject };
 export type ReservationCardProps = {
   booking: BookingObject;
   onDelete: (bookingId: number) => Promise<void>;
@@ -62,7 +65,7 @@ interface BookingObject {
   created_at: string;
   cabins: { name: string; image: string };
 }
-export interface CabinObject {
+interface CabinObject {
   id: number;
   name: string;
   maxCapacity: number;

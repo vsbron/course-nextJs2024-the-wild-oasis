@@ -1,7 +1,7 @@
 "use client";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ButtonProps } from "../_lib/types";
+
+import { ButtonProps } from "@/app/_lib/types";
 
 function Filter() {
   // Getting the current search params, router object & current path using hooks

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { TextExpanderProps } from "../_lib/types";
+
+import { TextExpanderProps } from "@/app/_lib/types";
 
 function TextExpander({ children }: TextExpanderProps) {
   // Setting the state for expanded text

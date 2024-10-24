@@ -1,10 +1,10 @@
-import { UsersIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { UsersIcon } from "@heroicons/react/24/solid";
 
-import { CabinObject } from "../_lib/types";
+import { CabinCardProps } from "@/app/_lib/types";
 
-function CabinCard({ cabin }: { cabin: CabinObject }) {
+function CabinCard({ cabin }: CabinCardProps) {
   // Destructuring the cabin object
   const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
 

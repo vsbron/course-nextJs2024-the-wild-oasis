@@ -2,9 +2,9 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { auth, signIn, signOut } from "./auth";
-import { getBookings } from "./data-service";
-import { supabase } from "./supabase";
+import { auth, signIn, signOut } from "@/app/_lib/auth";
+import { getBookings } from "@/app/_lib/data-service";
+import { supabase } from "@/app/_lib/supabase";
 
 // Server action for logging in
 export async function signInAction() {
@@ -44,7 +44,7 @@ export async function updateGuest(formData) {
     .select()
     .single();
 
-  // Error handler if query wasn't successfull
+  // Error handler if query wasn't successful
   if (error) throw new Error("Guest could not be updated");
 
   // Revalidating path to get rid of caching

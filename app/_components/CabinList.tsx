@@ -1,7 +1,6 @@
-import { getCabins } from "../_lib/data-service";
-import { CabinFilter } from "../_lib/types";
-
-import CabinCard from "./CabinCard";
+import CabinCard from "@/app/_components/CabinCard";
+import { getCabins } from "@/app/_lib/data-service";
+import { CabinFilter } from "@/app/_lib/types";
 
 async function CabinList({ filter }: CabinFilter) {
   // Getting the cabins data from supabase

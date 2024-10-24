@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { getCabins } from "../_lib/data-service";
 
+import { getCabins } from "@/app/_lib/data-service";
 import image1 from "@/public/about-1.jpg";
 
 // Setting the revalidation time of the page to once a day
@@ -15,6 +15,7 @@ async function Page() {
   // Fetching the cabins data from the Database
   const cabins = await getCabins();
 
+  // Returned JSX
   return (
     <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center lg:grid-cols-1 lg:gap-y-12">
       <div className="col-span-3 lg:col-span-1">

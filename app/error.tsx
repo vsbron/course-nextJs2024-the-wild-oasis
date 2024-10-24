@@ -1,6 +1,5 @@
 "use client";
-
-import { ErrorProps } from "./_lib/types";
+import { ErrorProps } from "@/app/_lib/types";
 
 function Error({ error, reset }: ErrorProps) {
   // Returned JSX

@@ -1,6 +1,7 @@
-import { eachDayOfInterval } from "date-fns";
-import { supabase } from "./supabase";
 import { notFound } from "next/navigation";
+import { eachDayOfInterval } from "date-fns";
+
+import { supabase } from "@/app/_lib/supabase";
 
 // Query function for getting the cabin via ID
 export async function getCabin(id) {

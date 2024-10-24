@@ -1,5 +1,5 @@
 import { getCountries } from "@/app/_lib/data-service";
-import { CountryObject, SelectCountryProps } from "../_lib/types";
+import { CountryObject, SelectCountryProps } from "@/app/_lib/types";
 
 async function SelectCountry({
   defaultCountry,
@@ -12,6 +12,7 @@ async function SelectCountry({
     countries.find((country: CountryObject) => country.name === defaultCountry)
       ?.flag ?? "";
 
+  // Returned JSX
   return (
     <select
       name={name}

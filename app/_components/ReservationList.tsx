@@ -1,10 +1,9 @@
 "use client";
 import { useOptimistic } from "react";
 
-import { deleteReservation } from "../_lib/actions";
-import { ReservationListProps } from "../_lib/types";
-
-import ReservationCard from "./ReservationCard";
+import ReservationCard from "@/app/_components/ReservationCard";
+import { deleteReservation } from "@/app/_lib/actions";
+import { ReservationListProps } from "@/app/_lib/types";
 
 function ReservationList({ bookings }: ReservationListProps) {
   // Getting the optimistic state and setter function from useOptimistic hook

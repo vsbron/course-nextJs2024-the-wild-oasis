@@ -1,11 +1,10 @@
 "use client";
 import { differenceInDays } from "date-fns";
 
+import { useReservation } from "@/app/_components/ReservationContext";
+import SubmitButton from "@/app/_components/SubmitButton";
 import { createReservation } from "@/app/_lib/actions";
 import { ReservationFormProps } from "@/app/_lib/types";
-
-import { useReservation } from "./ReservationContext";
-import SubmitButton from "./SubmitButton";
 
 function ReservationForm({ cabin, user }: ReservationFormProps) {
   // Getting the range state and resetRange from the custom hook

@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 
 import CabinList from "@/app/_components/CabinList";
-import Spinner from "@/app/_components/Spinner";
 import Filter from "@/app/_components/Filter";
 import ReservationReminder from "@/app/_components/ReservationReminder";
-import { CabinsPageParams } from "../_lib/types";
+import Spinner from "@/app/_components/Spinner";
+import { CabinsPageParams } from "@/app/_lib/types";
 
 // Opting out of caching (making the page dynamically) (Not relevant anymore)
 // export const revalidate = 3600;

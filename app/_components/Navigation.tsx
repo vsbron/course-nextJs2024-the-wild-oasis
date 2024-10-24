@@ -2,11 +2,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { HamburgerProps, NavigationProps } from "../_lib/types";
+
+import { HamburgerProps, NavigationProps } from "@/app/_lib/types";
 
 function Navigation({ session }: NavigationProps) {
   // State of the mobile menu
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   // Hamburger click handler
   const clickHandler = () => {

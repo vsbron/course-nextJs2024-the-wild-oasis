@@ -1,8 +1,8 @@
 "use client";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 import { format } from "date-fns";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
-import { useReservation } from "./ReservationContext";
+import { useReservation } from "@/app/_components/ReservationContext";
 
 function ReservationReminder() {
   // Getting the range from the custom hook
