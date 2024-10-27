@@ -61,7 +61,7 @@ export interface BookingData {
   cabinPrice: number | undefined;
   cabinId: string;
 }
-interface BookingObject {
+export interface BookingObject {
   id: string;
   guestId: number;
   startDate: string;
@@ -70,7 +70,7 @@ interface BookingObject {
   totalPrice: number;
   numGuests: number;
   created_at: string;
-  cabins: { name: string; image: string }[];
+  cabins: { name: string; image: string };
 }
 interface CabinObject {
   id: string;

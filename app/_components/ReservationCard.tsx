@@ -21,7 +21,7 @@ function ReservationCard({ booking, onDelete }: ReservationCardProps) {
     totalPrice,
     numGuests,
     created_at,
-    cabins: [{ name, image }],
+    cabins: { name, image },
   } = booking;
 
   // Returned JSX

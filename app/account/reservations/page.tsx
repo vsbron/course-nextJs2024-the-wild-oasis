@@ -15,6 +15,11 @@ export default async function Page() {
   // Fetching the user's bookings data
   const bookings = await getBookings(guestId);
 
+  const adjustedBookings = bookings.map((booking) => ({
+    ...booking,
+    cabins: booking.cabins[0], // Take the first cabin
+  }));
+
   // Returned JSX
   return (
     <div>
