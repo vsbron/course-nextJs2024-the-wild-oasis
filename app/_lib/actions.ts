@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { auth, signIn, signOut } from "@/app/_lib/auth";
 import { getBookings } from "@/app/_lib/data-service";
 import { supabase } from "@/app/_lib/supabase";
+import { BookingData } from "./types";
 
 // Server action for logging in
 export async function signInAction() {
@@ -17,17 +18,19 @@ export async function signOutAction() {
 }
 
 // Server action for updating the user details
-export async function updateGuest(formData) {
+export async function updateGuest(formData: FormData) {
   // Getting the session and the guest ID
   const session = await auth();
-  const { guestId } = session.user;
+  const { guestId } = session!.user;
 
   // Guard clause for not logged in users
   if (!session) throw new Error("You must be logged in");
 
   // Getting the values from formData
-  const nationalID = formData.get("nationalID");
-  const [nationality, countryFlag] = formData.get("nationality").split("%");
+  const nationalID = (formData.get("nationalID") as string) || "";
+  const [nationality, countryFlag] = (
+    (formData.get("nationality") as string) || ""
+  ).split("%");
 
   // Validating the nationalID number
   if (!/^[a-zA-Z0-9]{6,12}$/.test(nationalID))
@@ -53,7 +56,10 @@ export async function updateGuest(formData) {
 
 // Server action for adding a new reservation
 // Receives two arguments because we binded the server action with additional data
-export async function createReservation(bookingData, formData) {
+export async function createReservation(
+  bookingData: BookingData,
+  formData: FormData
+) {
   // Getting the session object
   const session = await auth();
 
@@ -65,7 +71,10 @@ export async function createReservation(bookingData, formData) {
     ...bookingData,
     guestId: session.user.guestId,
     numGuests: Number(formData.get("numGuests")),
-    observations: formData.get("observations").slice(0, 1000),
+    observations: ((formData.get("observations") as string) || "").slice(
+      0,
+      1000
+    ),
     extrasPrice: 0,
     totalPrice: bookingData.cabinPrice,
     isPaid: false,
@@ -94,7 +103,7 @@ export async function createReservation(bookingData, formData) {
 }
 
 // Server action for deleting the booking
-export async function deleteReservation(bookingId) {
+export async function deleteReservation(bookingId: string) {
   // Getting the session object
   const session = await auth();
 
@@ -122,7 +131,7 @@ export async function deleteReservation(bookingId) {
 }
 
 // Server action for updating the reservation
-export async function updateReservation(formData) {
+export async function updateReservation(formData: FormData) {
   // Getting the values from formData
   const bookingId = Number(formData.get("bookingId"));
 
@@ -143,7 +152,10 @@ export async function updateReservation(formData) {
   // Preparing the updated guest data
   const updateData = {
     numGuests: Number(formData.get("numGuests")),
-    observations: formData.get("observations").slice(0, 1000),
+    observations: ((formData.get("observations") as string) || "").slice(
+      0,
+      1000
+    ),
   };
 
   // Running the query

@@ -54,6 +54,13 @@ export type UpdateProfileFormProps = {
 };
 
 // INTERFACES
+export interface BookingData {
+  startDate: string | undefined;
+  endDate: string | undefined;
+  numNights: number | undefined;
+  cabinPrice: number | undefined;
+  cabinId: number | undefined;
+}
 interface BookingObject {
   id: number;
   guestId: number;
@@ -79,7 +86,7 @@ export interface CountryObject {
   flag: string;
   independent: boolean;
 }
-interface GuestObject {
+export interface GuestObject {
   fullName: string;
   email: string;
   nationality: string;

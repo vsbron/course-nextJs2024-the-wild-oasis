@@ -2,9 +2,10 @@ import { notFound } from "next/navigation";
 import { eachDayOfInterval } from "date-fns";
 
 import { supabase } from "@/app/_lib/supabase";
+import { GuestObject } from "@/app/_lib/types";
 
 // Query function for getting the cabin via ID
-export async function getCabin(id) {
+export async function getCabin(id: string) {
   // Running the query
   const { data, error } = await supabase
     .from("cabins")
@@ -22,12 +23,13 @@ export async function getCabin(id) {
 }
 
 // Query function for getting the cabin price via ID
-export async function getCabinPrice(id) {
+export async function getCabinPrice(id: string) {
   // Running the query
   const { data, error } = await supabase
     .from("cabins")
     .select("regularPrice, discount")
-    .eq("id", id)``.single();
+    .eq("id", id)
+    .single();
 
   // Error handling
   if (error) {
@@ -55,7 +57,7 @@ export const getCabins = async function () {
 };
 
 // Query function for getting the guest via email
-export async function getGuest(email) {
+export async function getGuest(email: string) {
   // Running the query
   const { data, error } = await supabase
     .from("guests")
@@ -68,7 +70,7 @@ export async function getGuest(email) {
 }
 
 // Query function for getting the booking via ID
-export async function getBooking(id) {
+export async function getBooking(id: string) {
   // Running the query
   const { data, error, count } = await supabase
     .from("bookings")
@@ -86,7 +88,7 @@ export async function getBooking(id) {
 }
 
 // Query function for getting all of the guest's booking via guest ID
-export async function getBookings(guestId) {
+export async function getBookings(guestId: string) {
   // Running the query
   const { data, error } = await supabase
     .from("bookings")
@@ -107,17 +109,17 @@ export async function getBookings(guestId) {
 }
 
 // Query function for getting all the booked dates of the cabin via ID
-export async function getBookedDatesByCabinId(cabinId) {
-  let today = new Date();
+export async function getBookedDatesByCabinId(cabinId: string) {
+  const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
-  today = today.toISOString();
+  const todayStr = today.toISOString();
 
   // Running the query (getting all the bookings)
   const { data, error } = await supabase
     .from("bookings")
     .select("*")
     .eq("cabinId", cabinId)
-    .or(`startDate.gte.${today},status.eq.checked-in`);
+    .or(`startDate.gte.${todayStr},status.eq.checked-in`);
 
   // Error handling
   if (error) {
@@ -166,7 +168,7 @@ export async function getCountries() {
 }
 
 // Query function for creating the new guest if logged for the first time
-export async function createGuest(newGuest) {
+export async function createGuest(newGuest: GuestObject) {
   // Running the query
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
