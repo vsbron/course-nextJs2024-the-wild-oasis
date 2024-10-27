@@ -63,7 +63,7 @@ interface BookingObject {
   totalPrice: number;
   numGuests: number;
   created_at: string;
-  cabins: { name: string; image: string };
+  cabins: { name: string; image: string }[];
 }
 interface CabinObject {
   id: number;

@@ -12,7 +12,7 @@ export async function getCabin(id) {
     .eq("id", id)
     .single();
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     notFound();
@@ -29,7 +29,7 @@ export async function getCabinPrice(id) {
     .select("regularPrice, discount")
     .eq("id", id)``.single();
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
   }
@@ -45,7 +45,7 @@ export const getCabins = async function () {
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     throw new Error("Cabins could not be loaded");
@@ -76,7 +76,7 @@ export async function getBooking(id) {
     .eq("id", id)
     .single();
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     throw new Error("Booking could not get loaded");
@@ -97,7 +97,7 @@ export async function getBookings(guestId) {
     .eq("guestId", guestId)
     .order("startDate");
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     throw new Error("Bookings could not get loaded");
@@ -119,7 +119,7 @@ export async function getBookedDatesByCabinId(cabinId) {
     .eq("cabinId", cabinId)
     .or(`startDate.gte.${today},status.eq.checked-in`);
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     throw new Error("Bookings could not get loaded");
@@ -143,7 +143,7 @@ export async function getSettings() {
   // Running the query
   const { data, error } = await supabase.from("settings").select("*").single();
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     throw new Error("Settings could not be loaded");
@@ -170,7 +170,7 @@ export async function createGuest(newGuest) {
   // Running the query
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
-  // Error handlng
+  // Error handling
   if (error) {
     console.error(error);
     throw new Error("Guest could not be created");

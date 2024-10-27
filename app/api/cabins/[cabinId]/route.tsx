@@ -1,10 +1,14 @@
 import { getBookedDatesByCabinId, getCabin } from "@/app/_lib/data-service";
+import { NextRequest } from "next/server";
 
 /* API ENDPOINT */
 // Not really useful because of new Server Actions
 
 // Response for GET request
-export async function GET(request, { params }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { cabinId: string } }
+) {
   // Getting the cabinId from params
   const { cabinId } = params;
 
