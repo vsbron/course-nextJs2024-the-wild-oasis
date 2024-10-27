@@ -16,7 +16,7 @@ function ReservationList({ bookings }: ReservationListProps) {
   );
 
   // Delete handler function that we're going do prop drill
-  async function handleDelete(bookingId: number) {
+  async function handleDelete(bookingId: string) {
     optimisticDelete(bookingId); // optimistic delete
     await deleteReservation(bookingId); // server action delete
   }

@@ -22,8 +22,8 @@ export type ButtonProps = {
 export type CabinProps = { cabin: CabinObject };
 export type CabinCardProps = { cabin: CabinObject };
 export type DeleteReservationProps = {
-  bookingId: number;
-  onDelete: (bookingId: number) => Promise<void>;
+  bookingId: string;
+  onDelete: (bookingId: string) => Promise<void>;
 };
 export type HamburgerProps = {
   onClick: () => void;
@@ -33,7 +33,7 @@ export type NavigationProps = { session: Session | null };
 export type ReservationProps = { cabin: CabinObject };
 export type ReservationCardProps = {
   booking: BookingObject;
-  onDelete: (bookingId: number) => Promise<void>;
+  onDelete: (bookingId: string) => Promise<void>;
 };
 export type ReservationFormProps = { cabin: CabinObject; user: UserObject };
 export type ReservationListProps = { bookings: BookingObject[] };
@@ -59,10 +59,10 @@ export interface BookingData {
   endDate: string | undefined;
   numNights: number | undefined;
   cabinPrice: number | undefined;
-  cabinId: number | undefined;
+  cabinId: string;
 }
 interface BookingObject {
-  id: number;
+  id: string;
   guestId: number;
   startDate: string;
   endDate: string;
@@ -73,7 +73,7 @@ interface BookingObject {
   cabins: { name: string; image: string }[];
 }
 interface CabinObject {
-  id: number;
+  id: string;
   name: string;
   maxCapacity: number;
   regularPrice: number;
@@ -106,7 +106,7 @@ export interface UserObject {
   name: string;
   email: string;
   image: string;
-  guestId?: number;
+  guestId?: string;
 }
 
 // CONTEXT
