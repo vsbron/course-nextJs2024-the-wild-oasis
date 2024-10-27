@@ -102,7 +102,7 @@ interface Session {
   };
   expires: string;
 }
-interface UserObject {
+export interface UserObject {
   name: string;
   email: string;
   image: string;
