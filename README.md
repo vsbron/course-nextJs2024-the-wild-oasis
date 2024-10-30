@@ -1,40 +1,39 @@
-# The Wild Oasis client-side web app
+# The Wild Oasis [Client]
 
-Client-side web app for The Wild Oasis project which allows to choose a cabin and book it for a period of stay.
-The app data is synchronized with The Wild Oasis internal SPA for managing guests, cabins and bookings.
+**The Wild Oasis [Client]** is a client-side web app for The Wild Oasis project that allows users to choose a cabin and book it for a period of stay. The app data is synchronized with The Wild Oasis internal SPA for managing guests, cabins, and bookings.
 
 ## Features
 
 ### General
 
-- Index page that simply displays the main title and some navigation buttons;
-- Cabins page that lists the available cabins with the option of filtering them;
-- Cabin page contains some basic info about the cabin as well as the option to reserve it for a stay;
-- Reservation is done by selecting available dates and selecting the number of guests;
-- About us page with the more info on the service and company;
+- **Index Page:** Displays the main title and navigation buttons.
+- **Cabins Page:** Lists available cabins with filtering options.
+- **Cabin Page:** Provides basic information about the cabin and an option to reserve it.
+- **Reservation Process:** Users can select available dates and the number of guests.
+- **About Us Page:** Offers more information on the service and the company.
 
 ### Account
 
-- Entering the Guest Area area requires authorization with Google Account;
-- Guest area main page lists welcome message and additional side navigation;
-- Reservations page shows all reservations made by the user, past and upcoming;
-- Upcoming reservations can be deleted or edited out;
-- When editing a reservation guest can update the amount of guests and add additional comment for the reservation;
-- Guest profile page allows guest to update some of his data in the app;
+- **Authorization Required:** Entering the Guest Area requires a Google Account.
+- **Guest Area Main Page:** Displays a welcome message and additional side navigation.
+- **Reservations Page:** Shows all user reservations, including past and upcoming.
+- **Reservation Management:** Upcoming reservations can be deleted or edited.
+- **Editing Reservations:** Users can update guest counts and add comments.
+- **Guest Profile Page:** Allows users to update their personal data.
 
 ## Details
 
-- Built using React, NEXT.js and TypeScript;
-- Styles are handled with Tailwind CSS;
-- Cabins page includes a filter that works by passing the state from Client to Server component using URL and Search params;
-- Dynamic Routes (with generated static params) are used for individual cabin pages;
-- Account route is protected by Auth.js library, it can be accessed only after logging in with Google Account;
-- After logging in, if it's a new user - it gets added to the Database. Session gets the guestId number for further use;
-- Log in and Sign Out are both handled by Auth.js and server actions;
-- When making/updating a reservation or user details, forms send the data to the database using Server Actions;
-- Forms status are displayed using useFormStatus and useTransition hooks;
-- Uses Image component for images optimizations;
-- Responsive design supporting mobile devices with a width of at least 360px;
+- **Technology Stack:** Built using **React**, **NEXT.js**, and **TypeScript**.
+- **Styling:** Handled with **Tailwind CSS** for responsive design.
+- **Cabins Filtering:** Works by passing state from the Client to the Server component using URL and Search params.
+- **Dynamic Routes:** Utilizes generated static params for individual cabin pages.
+- **Account Protection:** The account route is secured by the **Auth.js** library, accessible only after logging in with a Google Account.
+- **New User Addition:** After logging in, new users are added to the database. The session gets the guestId for further use.
+- **Authentication Management:** Log in and Sign Out are handled by **Auth.js** and server actions.
+- **Data Submission:** When making or updating a reservation or user details, forms send data to the database using Server Actions.
+- **Form Handling:** Form status is displayed using **useFormStatus** and **useTransition** hooks.
+- **Image Optimization:** Utilizes the **Image** component for optimized images.
+- **Responsive Design:** Supports mobile devices with a minimum width of 360px.
 
 ## Live version
 
